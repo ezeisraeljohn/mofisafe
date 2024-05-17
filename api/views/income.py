@@ -103,5 +103,3 @@ class IncomeDetails(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
         object.delete()
         return Response(status=204)
-
-
