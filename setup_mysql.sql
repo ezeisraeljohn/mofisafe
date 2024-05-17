@@ -3,7 +3,7 @@
 
 CREATE DATABASE IF NOT EXISTS mofisafe_dev_db;
 
-CREATE USER IF NOT EXISTS 'mofisafe_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
+CREATE USER IF NOT EXISTS 'mofisafe_dev'@'localhost' IDENTIFIED BY 'mofisafe_dev_pwd';
 
 GRANT ALL PRIVILEGES ON hbnb_dev_db.* TO 'mofisaf_dev'@'localhost';
 
