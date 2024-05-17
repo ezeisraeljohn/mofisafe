@@ -32,7 +32,7 @@ class Income(models.Model):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     source = models.CharField(max_length=100)
     date = models.DateTimeField(default=timezone.now)
-    description = models.TextField(default='')
+    description = models.TextField(default='', null=True)
     category = models.CharField(max_length=100, default='')
 
     def __str__(self):
@@ -63,7 +63,7 @@ class Expense(models.Model):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     category = models.CharField(max_length=100, default='')
     date = models.DateTimeField(default=timezone.now)
-    description = models.TextField(default='')
+    description = models.TextField(default='', null=True)
     payment_method = models.CharField(max_length=100, default=None)
 
     def __str__(self):
