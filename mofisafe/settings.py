@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'api',
+    'api.v1',
     'mofisafe_app.apps.MofisafeAppConfig',
     'rest_framework',
     'guardian',
