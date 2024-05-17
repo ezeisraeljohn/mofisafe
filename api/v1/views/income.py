@@ -84,7 +84,15 @@ class IncomeDetails(APIView):
         return Response(deserialized.data, status=status.HTTP_200_OK)
     
     def put(self, request, pk, format=None):
-        """ This will update an income """
+        """ This will update an income
+        Args:
+                request: The request object
+                pk: The primary key of the income
+                format: The format of the response
+        
+        Returns:
+                Response: The response object
+        """
         try:
             object = Income.objects.get(pk=pk)
         except Income.DoesNotExist:
@@ -97,6 +105,14 @@ class IncomeDetails(APIView):
         return Response(serialized_object.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk, format):
+        """ This will delete an income
+        Args:
+                request: The request object
+                pk: The primary key of the income
+                format: The format of the response
+        Returns:
+                Response: The response object
+        """
         try:
             object = Income.objects.get(pk=pk)
         except Income.DoesNotExist:
