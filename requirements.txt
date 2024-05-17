@@ -1,0 +1,16 @@
+# This are the necessary dependencies for the project
+# The project is written in Python 3
+# to download the required libraries, run the following command:
+# pip install -r requirements.txt
+
+# The libraries used in this project are:
+
+djangorestframework
+django_filters
+django-cors-headers
+django
+gunicorn
+guardian
+httpie
+pygments
+
