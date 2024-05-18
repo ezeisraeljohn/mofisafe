@@ -3,6 +3,7 @@ from rest_framework.decorators import permission_classes
 from rest_framework import permissions
 from mofisafe_app.models import Income
 from api.v1.serializers import SerializeIncome
+from api.v1.permissions import IsOwnerOrReadOnly
 
 
 class IncomeList(generics.ListCreateAPIView):
@@ -15,7 +16,8 @@ class IncomeList(generics.ListCreateAPIView):
 
     def post(self, request, args, kwargs):
         return self.create(request, args, kwargs)
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
 
 class IncomeDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -31,4 +33,5 @@ class IncomeDetail(generics.RetrieveUpdateDestroyAPIView):
     
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
