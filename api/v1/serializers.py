@@ -7,7 +7,7 @@ class SerializeIncome(serializers.ModelSerializer):
 
     class Meta:
         model = Income
-        fields = ['id', 'user_id', 'amount', 'source', 'date', 'description', 'category']
+        fields = ['id', 'owner', 'amount', 'source', 'date', 'description', 'category']
 
 
 class SerializeExpense(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class SerializeExpense(serializers.ModelSerializer):
 
     class Meta:
         model = Expense
-        fields = ['id', 'user_id', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
+        fields = ['id', 'owner', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
 
 
 class SerializeBudget(serializers.ModelSerializer):
@@ -23,4 +23,13 @@ class SerializeBudget(serializers.ModelSerializer):
 
     class Meta:
         model = Budget
-        fields = ['id','user_id', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
+        fields = ['id','owner', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
+
+class SerializeUser(serializers.ModelSerializer):
+    """Serializes users"""
+
+    income = SerializeIncome(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'income']
