@@ -13,3 +13,6 @@ gunicorn
 guardian
 httpie
 pygments
+# Uncomment this for MacOS m1 users
+# mysqlclient
+# pymysql

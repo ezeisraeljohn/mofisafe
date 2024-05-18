@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'mofisafe.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mofisafe',
-        'USER': 'hbnb_dev',
-        'PASSWORD': 'hbnb_dev_pwd',
+        'NAME': 'mofisafe_dev_db',
+        'USER': 'mofisafe_dev',
+        'PASSWORD': 'mofisafe_dev_pwd',
         'HOST': 'localhost'
     }
 }
