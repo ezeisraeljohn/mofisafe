@@ -2,7 +2,9 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
 # Create your models here.
 
 categories_expenses = ['Food', 'Emergency', 'Clothing', 'Housing', 'Health', 'Others']
@@ -28,12 +30,12 @@ class Income(models.Model):
         date=datetime.now(), source='Salary', category='Salary', user_id=1)
         income.save()
     """
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     source = models.CharField(max_length=100)
     date = models.DateTimeField(default=timezone.now)
     description = models.TextField(default='', null=True)
     category = models.CharField(max_length=100, default='')
+    owner = models.ForeignKey('auth.User', related_name='income', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         """ Return a human readable representation of the model instance. """
@@ -59,12 +61,12 @@ class Expense(models.Model):
         date=datetime.now(), description='Rent', payment_method='Cash', user_id=1)
         expenses.save()
     """
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     category = models.CharField(max_length=100, default='')
     date = models.DateTimeField(default=timezone.now)
     description = models.TextField(default='', null=True)
     payment_method = models.CharField(max_length=100, default=None)
+    owner = models.ForeignKey('auth.User', related_name='expenses', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         """ Return a human readable representation of the model instance. """
@@ -86,12 +88,12 @@ class Budget(models.Model):
         budget = Budget(amount=1000, category='Rent', user_id=1)
         budget.save()
     """
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
 
     period = models.CharField(max_length=100, default='monthly')
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField(default=None)
+    owner = models.ForeignKey('auth.User', related_name='budgets', on_delete=models.CASCADE, default=1)
 
 
     def __str__(self):
