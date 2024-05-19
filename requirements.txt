@@ -6,7 +6,7 @@
 # The libraries used in this project are:
 
 djangorestframework
-django_filters
+
 django-cors-headers
 django
 gunicorn
@@ -14,5 +14,5 @@ guardian
 httpie
 pygments
 # Uncomment this for MacOS m1 users
-# mysqlclient
-# pymysql
+mysqlclient
+pymysql

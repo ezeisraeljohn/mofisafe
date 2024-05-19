@@ -32,6 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'api',
+    'budget',
+    'income',
+    'expenses',
+    'users',
     'mofisafe_app.apps.MofisafeAppConfig',
     'rest_framework',
     'guardian',
