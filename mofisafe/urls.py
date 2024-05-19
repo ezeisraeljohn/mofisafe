@@ -21,5 +21,5 @@ from django.contrib.auth.models import User
 urlpatterns = [
         path('admin/', admin.site.urls),
         path('', include('api.v1.urls')),
-         path('api/v1/auth/', include('rest_framework.urls')),
+        path('api/v1/auth/', include('rest_framework.urls')),
 ]
