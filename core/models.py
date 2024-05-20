@@ -8,3 +8,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        """ Return a human readable representation of the model instance. """
+        return str({f'{type(self).__name__}.{self.id}: {self.__dict__}'})

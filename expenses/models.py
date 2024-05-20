@@ -6,8 +6,6 @@ from core.models import BaseModel
 class Expense(BaseModel):
     """ This class represents the expenses model.
 
-    Methods:
-        __str__(): Return a human readable representation of the model instance.
 
     Example:
         expenses = Expenses(amount=1000, category='Rent',
@@ -21,6 +19,3 @@ class Expense(BaseModel):
     description = models.TextField(default='', null=True)
     payment_method = models.CharField(max_length=100, default=None)
 
-    def __str__(self):
-        """ Return a human readable representation of the model instance. """
-        return str({f'{type(self).__name__}.{self.id}: {self.__dict__}'})
