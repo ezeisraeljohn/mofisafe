@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework import permissions
 from rest_framework import viewsets
 from income.models import Income
-from api.v1.serializers import SerializeIncome
+from income.serializer import SerializeIncome
 from api.v1.permissions import IsOwnerOrReadOnly
 
 
