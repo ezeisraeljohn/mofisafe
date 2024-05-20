@@ -1,13 +1,16 @@
-from mofisafe_app.models import Budget, User, Income, Expense
+from budget.models import Budget
+from income.models import Income
+from expenses.models import Expense
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
-class SerializeIncome(serializers.ModelSerializer):
+class SerializeIncome(serializers.HyperlinkedModelSerializer):
     """This serializers the Income class"""
-
+    user = serializers.ReadOnlyField(source='user.username')
     class Meta:
         model = Income
-        fields = ['id', 'owner', 'amount', 'source', 'date', 'description', 'category']
+        fields = ['url', 'id', 'user', 'amount', 'source', 'date', 'category']
 
 
 class SerializeExpense(serializers.ModelSerializer):
@@ -15,7 +18,7 @@ class SerializeExpense(serializers.ModelSerializer):
 
     class Meta:
         model = Expense
-        fields = ['id', 'owner', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
+        fields = ['id', 'user', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
 
 
 class SerializeBudget(serializers.ModelSerializer):
@@ -23,13 +26,12 @@ class SerializeBudget(serializers.ModelSerializer):
 
     class Meta:
         model = Budget
-        fields = ['id','owner', 'amount', 'source', 'date', 'description', 'category', 'payment_method']
+        fields = ['id','user', 'amount', 'source', 'date', 'category', 'payment_method']
 
-class SerializeUser(serializers.ModelSerializer):
+class SerializeUser(serializers.HyperlinkedModelSerializer):
     """Serializes users"""
-
-    income = SerializeIncome(many=True, read_only=True)
+    income = serializers.HyperlinkedRelatedField(many=True, view_name='income-detail', read_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'income']
+        fields = ['url','id', 'username', 'income']
