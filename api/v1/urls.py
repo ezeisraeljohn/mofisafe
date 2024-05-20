@@ -49,15 +49,15 @@ user_details = user.UserViewSet.as_view({
 })
 
 urlpatterns = [
-        path('api/v1/income/', income_list, name='income_list'),
-        path('api/v1/income/<int:pk>/', income_details, name='income-detail'),
-        path('api/v1/expenses/', expense_list, name='expense-list'),
-        path('api/v1/expense/<int:pk>/', expense_details, name='expense-detail'),
-        path('api/v1/budgets/', budget_list, name='budget_list'),
-        path('api/v1/budget/<int:pk>/', budget_details, name='budget-detail'),
-        path('api/v1/users/', user_list, name="users_list"),
-        path('api/v1/user/<int:pk>/', user_details, name="user-detail"),
-        path('api/v1/', api_root.api_root, name='api_root')
+        path('income/', income_list, name='income_list'),
+        path('income/<int:pk>/', income_details, name='income-detail'),
+        path('expenses/', expense_list, name='expense-list'),
+        path('expense/<int:pk>/', expense_details, name='expense-detail'),
+        path('budgets/', budget_list, name='budget_list'),
+        path('budget/<int:pk>/', budget_details, name='budget-detail'),
+        path('users/', user_list, name="users_list"),
+        path('user/<int:pk>/', user_details, name="user-detail"),
+        path('', api_root.api_root, name='api_root')
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
