@@ -1,6 +1,6 @@
 from rest_framework import permissions
 from rest_framework import viewsets
-from api.v1.serializers import SerializeBudget
+from budget.serializer import SerializeBudget
 from api.v1.permissions import IsOwnerOrReadOnly
 from budget.models import Budget
 
