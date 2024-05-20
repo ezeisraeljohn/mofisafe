@@ -12,7 +12,7 @@ class Expense(BaseModel):
         date=datetime.now(), description='Rent', payment_method='Cash', user_id=1)
         expenses.save()
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='expenses', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     date = models.DateTimeField()
     category = models.CharField(max_length=100, default='')
