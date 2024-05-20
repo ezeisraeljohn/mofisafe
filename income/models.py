@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from core.models import BaseModel
 
 
-class Income(models.Model):
+class Income(BaseModel):
     """This class represents the income model.
 
     Methods:
@@ -14,12 +14,9 @@ class Income(models.Model):
         date=datetime.now(), source='Salary', category='Salary', user_id=1)
         income.save()
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='income', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     date = models.DateTimeField()
     source = models.CharField(max_length=100)
     category = models.CharField(max_length=100, default='')
 
-    def __str__(self):
-        """ Return a human readable representation of the model instance. """
-        return str({f'{type(self).__name__}.{self.id}: {self.__dict__}'})
