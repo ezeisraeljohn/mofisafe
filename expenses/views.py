@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Expense
+from rest_framework import permissions
+from .serializer import SerializeExpense
+from utils.permissions import IsOwnerOrReadOnly
 
-# Create your views here.
+
+
+
+class ExpenseViewSet(viewsets.ModelViewSet):
+    
+    queryset = Expense.objects.all()
+    serializer_class = SerializeExpense
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]

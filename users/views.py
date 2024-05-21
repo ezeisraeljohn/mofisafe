@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.decorators import permission_classes
+from rest_framework import viewsets
+from rest_framework.permissions import AllowAny
+from .serializer import SerializeUser
+from django.contrib.auth.models import User
 
-# Create your views here.
+
+class UserViewSet(viewsets.ModelViewSet):
+    """ This gets all users """
+    queryset = User.objects.all()
+    serializer_class = SerializeUser
