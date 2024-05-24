@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Categories
+from rest_framework import permissions
+from .serializer import SerializeCategories
+from utils.permissions import IsOwnerOrReadOnly
 
-# Create your views here.
+
+
+
+class CategoriesViewSet(viewsets.ModelViewSet):
+    
+    queryset = Categories.objects.all()
+    serializer_class = SerializeCategories
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]

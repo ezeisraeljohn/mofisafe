@@ -3,6 +3,7 @@ from income import views as incomeViews
 from users import views as usersViews
 from expenses import views as expenseViews
 from budget import views as budgetViews
+from categories import views as categoriesViews
 from rest_framework.urlpatterns import format_suffix_patterns
 from api.v1.views import api_root
 
@@ -48,10 +49,23 @@ user_details = usersViews.UserViewSet.as_view({
         'get': 'retrieve'
 })
 
+categories_list = categoriesViews.CategoriesViewSet.as_view({
+        'get':'list',
+        'post': 'create'
+})
+
+categories_details = categoriesViews.CategoriesViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'delete': 'destroy'
+})
+
 
 urlpatterns = [
         path('income/', income_list, name='income_list'),
         path('income/<int:pk>/', income_details, name='income-detail'),
+        path('categories/', categories_list, name='categories_list'),
+        path('categories/<int:pk>/', categories_details, name='categories-detail'),
         path('expenses/', expense_list, name='expense_list'),
         path('expense/<int:pk>/', expense_details, name='expense-detail'),
         path('budgets/', budget_list, name='budget_list'),
