@@ -1,4 +1,4 @@
-from .models import Categories
+from categories.models import Categories
 from rest_framework import serializers
 
 
