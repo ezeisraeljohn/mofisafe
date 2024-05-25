@@ -4,7 +4,6 @@ from categories.models import Categories
 from rest_framework import permissions
 from .serializer import SerializeCategories
 from utils.permissions import IsOwnerOrReadOnly
-from .forms import CategoryForm
 from django.shortcuts import redirect, render
 
 
