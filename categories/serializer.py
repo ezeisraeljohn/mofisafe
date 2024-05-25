@@ -8,4 +8,4 @@ class SerializeCategories(serializers.ModelSerializer):
 
     class Meta:
         model = Categories
-        fields = ['id', 'name', 'description', 'date']
+        fields = ['id', 'name', 'description']
