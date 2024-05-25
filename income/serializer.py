@@ -8,4 +8,4 @@ class SerializeIncome(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Income
-        fields = ['url', 'id', 'user', 'amount', 'source', 'date', 'category']
+        fields = ['url', 'user', 'amount', 'source', 'date', 'category']
