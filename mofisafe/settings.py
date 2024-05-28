@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'utils',
+    'categories',
     'api',
     'budget',
     'income',

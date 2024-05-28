@@ -3,7 +3,7 @@ from income import views as incomeViews
 from users import views as usersViews
 from expenses import views as expenseViews
 from budget import views as budgetViews
-from categories.api.v1 import views as categoriesViews
+from categories import views as categoriesViews
 from rest_framework.urlpatterns import format_suffix_patterns
 from api.v1.views import api_root
 
