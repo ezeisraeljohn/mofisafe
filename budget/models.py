@@ -14,5 +14,5 @@ class Budget(BaseModel):
     user = models.ForeignKey(User, related_name='budgets', on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     period = models.CharField(max_length=100, default='monthly')
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=None)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
