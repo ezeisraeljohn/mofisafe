@@ -14,10 +14,10 @@ This app is for all those who find it difficult to maintain their financial reco
 > Responsive design using Tailwind CSS
 
 ## Technology Used
-> Backend:
+1. Backend:
   > Django (python)
   > MySQL (database)
-> Frontend
+2. Frontend
   > Tailwind CSS
 
 ## Setup and Installation
