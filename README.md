@@ -7,11 +7,11 @@
 This app is for all those who find it difficult to maintain their financial records while keeping up with their busy schedule
 
 ## Features
-> User authentication (login and registration)
-> Track and Display total income, total expenses, and net savings
-> Detailed breakdown of expenses by category
-> Visual representation of income vs. expenses and category spending
-> Responsive design using Tailwind CSS
+- User authentication (login and registration)
+- Track and Display total income, total expenses, and net savings
+- Detailed breakdown of expenses by category
+- Visual representation of income vs. expenses and category spending
+- Responsive design using Tailwind CSS
 
 ## Technology Used
 1. Backend:
