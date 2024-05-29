@@ -37,7 +37,7 @@ This app is for all those who find it difficult to maintain their financial reco
 2. Login or Register
   - Use the authentication features to log in or create a new account.
 
-3. Manage Finaances
+3. Manage Finances
    - Add your income and expenses.
    - View the summary of your financial data.
    - Analyze your spending patterns with the provided charts.
