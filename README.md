@@ -15,10 +15,10 @@ This app is for all those who find it difficult to maintain their financial reco
 
 ## Technology Used
 1. Backend:
-  > Django (python)
-  > MySQL (database)
+  - Django (python)
+  - MySQL (database)
 2. Frontend
-  > Tailwind CSS
+  - Tailwind CSS
 
 ## Setup and Installation
 - Python 3.x
