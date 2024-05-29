@@ -32,15 +32,15 @@ This app is for all those who find it difficult to maintain their financial reco
 
 ## Usage
 1. Access the Application
-  > Open your browser and go to ...
+  - Open your browser and go to ...
 
 2. Login or Register
-  > Use the authentication features to log in or create a new account.
+  - Use the authentication features to log in or create a new account.
 
 3. Manage Finaances
-   > Add your income and expenses.
-   > View the summary of your financial data.
-   > Analyze your spending patterns with the provided charts.
+   - Add your income and expenses.
+   - View the summary of your financial data.
+   - Analyze your spending patterns with the provided charts.
 
 
 ## Acknowledgements
