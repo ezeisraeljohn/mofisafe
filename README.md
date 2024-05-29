@@ -21,11 +21,11 @@ This app is for all those who find it difficult to maintain their financial reco
   > Tailwind CSS
 
 ## Setup and Installation
-- Python3.x
-- django 3.x
+- Python 3.x
+- Django 3.x
 - MySQL database
 - Node.js and npm (for Tailwind CSS)
-- backend dependencies are in the "requirement.txt" file
+- Backend dependencies are in the "requirement.txt" file
 - MySQL database for this project is in the "settings.py" file
 - Migration between Django and Tailwind used the "manage.py" file
 
