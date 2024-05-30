@@ -13,26 +13,6 @@
     <nav class="bg-blue-300 p-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="{%url 'index'%}" class="text-white text-xl font-bold">MofiSafe<br>FINANCIAL TRACKING APP FOR EVERYONE</a>
-            <div class="text-white space-x-4">
-                <a href="{%url 'index'%}" class="hover:underline">Home</a>
-                <a href="{%url 'about'%}" class="hover:underline">About</a>
-                {%if user.authenticated%}
-                <a href="#" class="hover:underline">Dashboard</a>
-                {%endif%}
-
-                {%if user.authenticated%}
-                <a href="#" class="hover:underline">Transactions</a>
-                {%endif%}
-                {%if user.authenticated%}
-                <a href="#" class="hover:underline">Reports</a>
-                {%endif%}
-                <a href="#" class="hover:underline">Settings</a>
-                <a href="contact.html" class="hover:underline">Contact</a>
-
-                {%if user.authenticated%}
-                <a href="#" class="hover:underline">Logout</a>
-                {%endif%}
-            </div>
         </div>
     </nav>
 
