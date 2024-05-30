@@ -13,6 +13,7 @@ gunicorn
 guardian
 httpie
 pygments
+django-compressor
 # Uncomment this for MacOS m1 users
 mysqlclient
 pymysql

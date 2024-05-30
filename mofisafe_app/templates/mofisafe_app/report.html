@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Report - Mofisafe</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-300 p-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-3xl font-bold">Mofisafe Monthly Report</h1>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8 space-y-8">
+
+        <!-- Template for a Month -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold text-gray-800">January</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                <!-- Total Income -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-700">Total Income</h3>
+                    <p class="text-green-600 text-lg mt-2">$5000.00</p>
+                </div>
+                
+                <!-- Total Expenses -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-700">Total Expenses</h3>
+                    <p class="text-red-600 text-lg mt-2">$3000.00</p>
+                </div>
+                
+                <!-- Net Savings -->
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-700">Net Savings</h3>
+                    <p class="text-blue-300 text-lg mt-2">$2000.00</p>
+                </div>
+            </div>
+
+            <!-- Category Breakdown -->
+            <div class="bg-gray-50 p-4 rounded-lg shadow-sm mt-6">
+                <h3 class="text-xl font-semibold text-gray-700">Category Breakdown</h3>
+                <ul class="mt-4 space-y-2">
+                    <li class="flex justify-between">
+                        <span class="text-gray-700">Groceries</span>
+                        <span class="text-red-600">$500.00</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-gray-700">Utilities</span>
+                        <span class="text-red-600">$300.00</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-gray-700">Rent</span>
+                        <span class="text-red-600">$1000.00</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-gray-700">Entertainment</span>
+                        <span class="text-red-600">$200.00</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-gray-700">Transportation</span>
+                        <span class="text-red-600">$150.00</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span class="text-gray-700">Other</span>
+                        <span class="text-red-600">$850.00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Repeat for other months as needed -->
+        <!-- Copy and paste the above template and change the month and values accordingly -->
+        
+    </div>
+
+</body>
+</html>
