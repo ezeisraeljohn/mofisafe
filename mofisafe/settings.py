@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -157,6 +158,7 @@ REST_FRAMEWORK = {
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'dashboard/'
 LOGIN_URL = 'accounts/login/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -165,3 +167,8 @@ EMAIL_USE_TSL = True
 EMAIL_HOST_USER = os.environ.get('User_Email')
 EMAIL_HOST_PASSWORD = os.environ.get('User_password')
 
+COMPRESS_ROOT = BASE_DIR / 'mofisafe_app/static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
