@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <div class="flex">
         <!-- Sidebar -->
         <div class="flex flex-col w-50 h-screen px-4 py-8 bg-blue-200 border-r">
@@ -51,7 +51,7 @@
                     </a>
                 </nav>
                 <div class="flex items-center px-4 -mx-2">
-                    <a href="index.html" class="flex items-center px-4 py-2">
+                    <a href="{%url 'index'%}" class="flex items-center px-4 py-2">
                         <svg class="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none">
                             <path d="M3 12l18-12-18 12 18 12-18-12z" fill="currentColor"></path>
                         </svg>
@@ -60,93 +60,93 @@
                 </div>
             </div>
         </div>
-    <!-- Navbar -->
-    <nav class="bg-blue-300 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-xl font-bold">MofiSafe<br>FINANCIAL TRACKING APP FOR EVERYONE</a>
-            <div class="text-white space-x-4">
-                <a href="transactions.html" class="hover:underline">Transactions</a>
-                <a href="report.html" class="hover:underline">Reports</a>
-                <a href="#" class="hover:underline">Settings</a>
-                <a href="index.html" class="hover:underline">Logout</a>
-            </div>
+
+        <!-- Main content -->
+        <div class="flex flex-col flex-1 w-full">
+            <header class="flex items-center justify-between w-full h-16 px-6 py-4 text-white bg-blue-200 border-b">
+                <h1 class="text-2xl font-semibold">Dashboard</h1>
+                <div class="flex items-center space-x-4">
+                    <a href="{%url 'about'%}"class="hover:underline">About</a>
+                    <a href="{%url 'contact'%}" class="hover:underline">Contact</a>
+                    <a href="{%url 'faq'%}" class="hover:underline">FAQ</a>
+                    <a href="{%url 'privacy'%}" class="hover:underline">Privacy Policy</a>
+                </div>
+            </header>
+            <main class="container mx-auto mt-6">
+                <!-- Welcome Section -->
+                <section class="bg-white p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-semibold text-gray-800">Welcome back, User!</h2>
+                    <p class="text-gray-600">Here is a summary of your financial status:</p>
+                </section>
+        
+                <!-- Summary Cards -->
+                <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    <!-- Balance Card -->
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-semibold text-gray-700">Balance</h3>
+                        <p class="text-3xl font-bold text-gray-900 mt-2">$5,405</p>
+                        <span class="text-green-500 text-sm font-medium">+23.5%</span>
+                    </div>
+        
+                    <!-- Income Card -->
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-semibold text-gray-700">Income</h3>
+                        <p class="text-3xl font-bold text-green-500 mt-2">$23,635</p>
+                        <span class="text-green-500 text-sm font-medium">+10%</span>
+                    </div>
+        
+                    <!-- Expense Card -->
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="text-lg font-semibold text-gray-700">Expense</h3>
+                        <p class="text-3xl font-bold text-red-500 mt-2">$18,230</p>
+                        <span class="text-red-500 text-sm font-medium">-5%</span>
+                    </div>
+                </section>
+        
+                <!-- Charts Section -->
+                <section class="mt-6 bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-700">Financial Overview</h3>
+                    <!-- Placeholder for charts -->
+                    <div id="chart" class="mt-4">
+                        <!-- You can integrate chart libraries like Chart.js here -->
+                        <p class="text-gray-600">Chart goes here</p>
+                    </div>
+                </section>
+        
+                <!-- Transactions Table -->
+                <section class="mt-6 bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-700">Recent Transactions</h3>
+                    <div class="mt-4">
+                        <table class="min-w-full bg-white">
+                            <thead>
+                                <tr>
+                                    <th class="py-2">Date</th>
+                                    <th class="py-2">Description</th>
+                                    <th class="py-2">Amount</th>
+                                    <th class="py-2">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="py-2">2024-05-17</td>
+                                    <td class="py-2">Grocery Shopping</td>
+                                    <td class="py-2 text-red-500">-$50</td>
+                                    <td class="py-2 text-green-500">Completed</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-2">2024-05-16</td>
+                                    <td class="py-2">Salary</td>
+                                    <td class="py-2 text-green-500">+$2000</td>
+                                    <td class="py-2 text-green-500">Completed</td>
+                                </tr>
+                                <!-- Add more transactions as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
         </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="container mx-auto mt-6">
-        <!-- Welcome Section -->
-        <section class="bg-white p-6 rounded-lg shadow">
-            <h2 class="text-2xl font-semibold text-gray-800">Welcome back, User!</h2>
-            <p class="text-gray-600">Here is a summary of your financial status:</p>
-        </section>
-
-        <!-- Summary Cards -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-            <!-- Balance Card -->
-            <div class="bg-white p-6 rounded-lg shadow">
-                <h3 class="text-lg font-semibold text-gray-700">Balance</h3>
-                <p class="text-3xl font-bold text-gray-900 mt-2">$5,405</p>
-                <span class="text-green-500 text-sm font-medium">+23.5%</span>
-            </div>
-
-            <!-- Income Card -->
-            <div class="bg-white p-6 rounded-lg shadow">
-                <h3 class="text-lg font-semibold text-gray-700">Income</h3>
-                <p class="text-3xl font-bold text-green-500 mt-2">$23,635</p>
-                <span class="text-green-500 text-sm font-medium">+10%</span>
-            </div>
-
-            <!-- Expense Card -->
-            <div class="bg-white p-6 rounded-lg shadow">
-                <h3 class="text-lg font-semibold text-gray-700">Expense</h3>
-                <p class="text-3xl font-bold text-red-500 mt-2">$18,230</p>
-                <span class="text-red-500 text-sm font-medium">-5%</span>
-            </div>
-        </section>
-
-        <!-- Charts Section -->
-        <section class="mt-6 bg-white p-6 rounded-lg shadow">
-            <h3 class="text-lg font-semibold text-gray-700">Financial Overview</h3>
-            <!-- Placeholder for charts -->
-            <div id="chart" class="mt-4">
-                <!-- You can integrate chart libraries like Chart.js here -->
-                <p class="text-gray-600">Chart goes here</p>
-            </div>
-        </section>
-
-        <!-- Transactions Table -->
-        <section class="mt-6 bg-white p-6 rounded-lg shadow">
-            <h3 class="text-lg font-semibold text-gray-700">Recent Transactions</h3>
-            <div class="mt-4">
-                <table class="min-w-full bg-white">
-                    <thead>
-                        <tr>
-                            <th class="py-2">Date</th>
-                            <th class="py-2">Description</th>
-                            <th class="py-2">Amount</th>
-                            <th class="py-2">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b">
-                            <td class="py-2">2024-05-17</td>
-                            <td class="py-2">Grocery Shopping</td>
-                            <td class="py-2 text-red-500">-$50</td>
-                            <td class="py-2 text-green-500">Completed</td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2">2024-05-16</td>
-                            <td class="py-2">Salary</td>
-                            <td class="py-2 text-green-500">+$2000</td>
-                            <td class="py-2 text-green-500">Completed</td>
-                        </tr>
-                        <!-- Add more transactions as needed -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+    </div>
 </body>
 
 </html>
