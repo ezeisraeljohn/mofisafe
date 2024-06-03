@@ -10,9 +10,16 @@ class Categories(BaseModel):
         date=datetime.now())
         categories.save()
     """
+
+    category_type = {
+        ('income', 'Income'),
+        ('expense', 'Expense')
+    }
     user = models.ForeignKey(User, related_name='categories', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
+    type = models.CharField(choices=category_type, default='Income', max_length=13)
+    category_balance = models.DecimalField(decimal_places=2, max_digits=20, default=0.00)
     
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.get_type_display()})"
