@@ -18,6 +18,6 @@ class Expense(BaseModel):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     date = models.DateTimeField()
     category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name='expenses')
-    description = models.TextField(default='', null=True)
+    description = models.TextField(null=True)
     payment_method = models.CharField(max_length=100, default=None, null=True, blank=True)
 
