@@ -24,6 +24,12 @@ SECRET_KEY = 'django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
 
 ALLOWED_HOSTS = []
 
@@ -48,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'compressor',
+    'corsheaders',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'mofisafe.urls'
@@ -129,7 +139,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'mofisafe_app/static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -156,10 +168,10 @@ REST_FRAMEWORK = {
     
 }
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = 'dashboard/'
+LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'accounts/login/'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -171,4 +183,8 @@ COMPRESS_ROOT = BASE_DIR / 'mofisafe_app/static'
 
 COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
