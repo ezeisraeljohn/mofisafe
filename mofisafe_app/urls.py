@@ -13,8 +13,8 @@ urlpatterns = [
         path('contact/', views.contact, name='contact'),
         path('transactions/', views.transaction, name='transaction'),
         path('report/', views.report, name='report'),
-        path("login/", views.user_login, name='login'),
         path("accounts/", include("django.contrib.auth.urls")),
+        path("accounts/login/", include("django.contrib.auth.urls"), name='login'),
         path('accounts/profile', include('django.contrib.auth.urls'))
 
 ]
