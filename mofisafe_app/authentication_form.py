@@ -9,4 +9,5 @@ class CustomAuthenticationForm(AuthenticationForm):
             'class': 'w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600'
         })
     )
-    lastname = forms.CharField(max_length=10)
+    last_name = forms.CharField(max_length=10)
+    email = forms.CharField(max_length=10)
