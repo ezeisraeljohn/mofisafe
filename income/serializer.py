@@ -4,12 +4,9 @@ from django.utils import timezone
 from rest_framework import serializers
 
 
-class SerializeIncome(serializers.ModelSerializer):
+class SerializeIncome(serializers.HyperlinkedModelSerializer):
     """This serializers the Income class"""
-    category = serializers.SlugRelatedField(
-        queryset=Categories.objects.all(),
-        slug_field='name'
-    )
+    category = serializers.PrimaryKeyRelatedField(queryset=Categories.objects.all())
 
     class Meta:
         model = Income
