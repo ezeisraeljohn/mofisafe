@@ -19,4 +19,4 @@ class Income(BaseModel):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
     date = models.DateTimeField()
     source = models.CharField(max_length=100)
-    category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name='incomes')
+    category = models.ForeignKey(Categories, on_delete=models.CASCADE, related_name='categories')

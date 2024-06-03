@@ -2,10 +2,14 @@
 module.exports = {
   content: [
         './mofisafe_app/templates/**/*.html',
+        './mofisafe_app/static/**/*.js',
+        "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+        require('flowbite/plugin')
+  ],
 }
 

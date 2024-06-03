@@ -1,3 +1,4 @@
+{%load widget_tweaks%}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +15,9 @@
         <div class="container mx-auto flex justify-between items-center">
             <a href="{%url 'index'%}" class="text-white text-xl font-bold">MofiSafe<br>FINANCIAL TRACKING APP FOR EVERYONE</a>
             <div class="text-white space-x-4">
-                <a href="about.html" class="hover:underline">About</a>
-                <a href="contact.html" class="hover:underline">Contact</a>
-                <a href="faq.html" class="hover:underline">FAQ</a>
+                <a href="{%url 'about'%}" class="hover:underline">About</a>
+                <a href="{%url 'contact'%}" class="hover:underline">Contact</a>
+                <a href="{%url 'faq'%}" class="hover:underline">FAQ</a>
                 <a href="privacy.html" class="hover:underline">Privacy Policy</a>
             </div>
         </div>
@@ -28,36 +29,42 @@
         <section class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
             <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create an Account</h2>
 
-            <form>
+            <form method="POST">
+                {%csrf_token%}
                 <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-semibold mb-2">Full Name</label>
-                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your full name" required>
+                    <label for="name" class="block text-gray-700 font-semibold mb-2">First Name</label>
+                    {%render_field form.first_name placeholder="John" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your full name"%}
+                </div>
+
+                <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Last Name</label>
+                        {%render_field form.last_name placeholder="Doe" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your full name"%}
+                </div>
+                <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Username</label>
+                        {%render_field form.username placeholder="Username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your full name"%}
                 </div>
 
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your email" required>
-                </div>
-                <div class="mb-4">
-                    <label for="number" class="block text-gray-700 font-semibold mb-2">Phone Number</label>
-                    <input type="number" id="number" name="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your number" required>
+                    {%render_field form.email placeholder="dean@example.com" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your full name"%}
                 </div>
 
                 <div class="mb-4">
                     <label for="password" class="block text-gray-700 font-semibold mb-2">Password</label>
-                    <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter your password" required>
+                    {%render_field form.password1  placeholder="********" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"%}
                 </div>
 
                 <div class="mb-6">
                     <label for="confirm-password" class="block text-gray-700 font-semibold mb-2">Confirm Password</label>
-                    <input type="password" id="confirm-password" name="confirm-password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Confirm your password" required>
+                    {%render_field form.password2 placeholder="********" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"%}
                 </div>
 
                 <button type="submit" class="w-full bg-blue-300 text-white py-2 rounded-lg hover:bg-blue-500 transition duration-200">Register</button>
             </form>
 
             <div class="mt-4 text-center">
-                <p class="text-gray-600">Already have an account? <a href="login.html" class="text-blue-300 hover:underline">Login</a></p>
+                <p class="text-gray-600">Already have an account? <a href="{%url 'login'%}" class="text-blue-300 hover:underline">Login</a></p>
             </div>
         </section>
     </main>

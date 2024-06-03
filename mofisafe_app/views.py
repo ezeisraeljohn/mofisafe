@@ -1,35 +1,26 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
-from .authentication_form import CustomAuthenticationForm
+from django.contrib.auth.decorators import login_required 
+from .forms import CustomUserCreationForm
 from django.contrib.auth import login
 
-@login_required(login_url='accounts/login/')
+
 def index(request):
     return render(request, "mofisafe_app/index.html", {})
-
-def user_login(request):
-    if request.method == 'POST':
-        form = CustomAuthenticationForm(request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return redirect('dashboard')
-    else:
-        form = CustomAuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
-
 
 def sign_up_view(request):
     """Sign up"""
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            redirect('accounts/login/')
-    
-    form = UserCreationForm()
+            return redirect('accounts/login/')
+        else:
+            print(form.errors)
+
+    form = CustomUserCreationForm()
     return render(request, 'registration/signup.html', context={'form': form})
 
+@login_required(login_url='accounts/login/')
 def dashboard(request):
     """ The Dashboard"""
     return render(request, 'mofisafe_app/dashboard.html', {})
