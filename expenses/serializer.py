@@ -2,11 +2,12 @@ from .models import Expense
 from income.models import Income
 from rest_framework import serializers
 from django.utils import timezone
+from categories.models import Categories
 
 
-class SerializeExpense(serializers.ModelSerializer):
+class SerializeExpense(serializers.HyperlinkedModelSerializer):
     """ This serializes the expenses"""
-
+    category = serializers.PrimaryKeyRelatedField(queryset=Categories.objects.all())
     class Meta:
         model = Expense
         fields = ['id', 'url', 'user', 'amount', 'date', 'description', 'category', 'payment_method']
