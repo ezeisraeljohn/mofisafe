@@ -30,12 +30,18 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         
         if category.user != user:
             return Response({"Error":"This category does not belong to you"})
+        
+        if category.type != 'income':
+            return Response({"Error": "Invalid category"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if category.category_balance < amount:
+            return Response({"Error": "Insufficient balance in category"}, status=status.HTTP_400_BAD_REQUEST)
 
         category.category_balance -= amount
 
         category.save()
 
-        serializer.save(user=self.request.user)
+        serializer.save(user=user)
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)

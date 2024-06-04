@@ -17,3 +17,10 @@ django-compressor
 # Uncomment this for MacOS m1 users
 mysqlclient
 pymysql
+django-widget-tweaks
+
+# for npm packages
+# npm install flowbite
+
+# refer to https://flowbite.com/docs/plugins/charts/ for flowbite if you have
+#any issue
