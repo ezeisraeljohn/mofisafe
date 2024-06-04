@@ -27,6 +27,9 @@ class IncomeViewSet(viewsets.ModelViewSet):
         if category.user != user:
             return Response({"Error":"This category does not belong to you"})
 
+        if category.type != 'income':
+            return Response({"Error": "Invalid 'Income' Category"}, status=status.HTTP_400_BAD_REQUEST)
+
         category.category_balance += amount
 
         category.save()
