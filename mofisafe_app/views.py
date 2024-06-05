@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required 
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login
+from django.urls import reverse
+from django.contrib import messages
 
 
 def index(request):
@@ -13,7 +15,8 @@ def sign_up_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('accounts/login/')
+            messages.success(request, 'Account created successfully. You can now log in.')
+            return redirect(reverse('login'))
         else:
             print(form.errors)
 
