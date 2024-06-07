@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <title>Financial Tracker Dashboard</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
@@ -141,9 +142,9 @@
           </section>
 
           <!-- Summary Cards -->
-          <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 ">
             <!-- Balance Card -->
-            <div class="bg-white p-6 rounded-lg shadow">
+            <div class="duration-500 bg-white p-6 rounded-lg shadow animate-fade-left animate-duration-[2000ms] animate-delay-[90ms]">
               <h3 class="text-lg font-semibold text-gray-700">
                 Available Balance
               </h3>
@@ -696,7 +697,7 @@
                   </div>
                 </div>
 
-                <p class="text-gray-600">Chart goes here</p>
+                <p class="text-gray-600 goes">Chart goes here</p>
               </div>
             </div>
           </section>
@@ -742,7 +743,7 @@
         >
           <div class="bg-white p-6 rounded-md w-96">
             <h2 class="text-xl font-semibold mb-4">Add Income</h2>
-            <form method="post">
+            <form id="add-income-form">
               {% csrf_token %}
               <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700"
@@ -752,16 +753,7 @@
                   type="number"
                   name="amount"
                   class="mt-1 p-2 w-full border rounded-md"
-                />
-              </div>
-              <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700"
-                  >Category</label
-                >
-                <input
-                  type="text"
-                  name="category"
-                  class="mt-1 p-2 w-full border rounded-md"
+                  id="add-income-amount"
                 />
               </div>
               <div class="mb-4">
@@ -772,6 +764,27 @@
                   type="date"
                   name="date"
                   class="mt-1 p-2 w-full border rounded-md"
+                  id="add-income-date"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Category</label
+                >
+                <select
+                  id="add-income-category"
+                  class="mt-1 p-2 w-full border rounded-md"
+                ></select>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Source</label
+                >
+                <input
+                  type="text"
+                  name="source"
+                  class="mt-1 p-2 w-full border rounded-md"
+                  id="add-income-source"
                 />
               </div>
               <div class="flex justify-end">
@@ -784,7 +797,7 @@
                 </button>
                 <button
                   type="submit"
-                  class="px-4 py-2 bg-blue-500 text-white rounded-md"
+                  class="px-4 py-2 bg-blue-900 text-white rounded-md"
                 >
                   Add
                 </button>
@@ -801,26 +814,19 @@
         >
           <div class="bg-white p-6 rounded-md w-96">
             <h2 class="text-xl font-semibold mb-4">Add Expense</h2>
-            <form method="post">
+            <form id="add-expense-form">
               {% csrf_token %}
               <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700"
+                <label
+                  class="block text-sm font-medium text-gray-700"
+                  for="add-expense-amount"
                   >Amount</label
                 >
                 <input
                   type="number"
                   name="amount"
                   class="mt-1 p-2 w-full border rounded-md"
-                />
-              </div>
-              <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700"
-                  >Category</label
-                >
-                <input
-                  type="text"
-                  name="category"
-                  class="mt-1 p-2 w-full border rounded-md"
+                  id="add-expense-amount"
                 />
               </div>
               <div class="mb-4">
@@ -831,7 +837,23 @@
                   type="date"
                   name="date"
                   class="mt-1 p-2 w-full border rounded-md"
+                  id="add-expense-date"
                 />
+        
+                <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700"
+                          >Description</label
+                        >
+                        <textarea class="mt-1 p-2 w-full border rounded-md" id="add-expense-description"></textarea>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Category</label
+                >
+                <select
+                  id="add-expense-category"
+                  class="mt-1 p-2 w-full border rounded-md"
+                ></select>
               </div>
               <div class="flex justify-end">
                 <button
@@ -843,7 +865,7 @@
                 </button>
                 <button
                   type="submit"
-                  class="px-4 py-2 bg-blue-500 text-white rounded-md"
+                  class="px-4 py-2 bg-blue-900 text-white rounded-md"
                 >
                   Add
                 </button>

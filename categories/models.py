@@ -16,7 +16,7 @@ class Categories(BaseModel):
         ('expense', 'Expense')
     }
     user = models.ForeignKey(User, related_name='categories', on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     type = models.CharField(choices=category_type, default='Income', max_length=13)
     category_balance = models.DecimalField(decimal_places=2, max_digits=20, default=0.00)
@@ -25,4 +25,4 @@ class Categories(BaseModel):
         return f"{self.name} ({self.get_type_display()})"
     
     class Meta:
-        unique_together = ('name', 'user', 'type')
+        unique_together = ['name', 'user', 'type']

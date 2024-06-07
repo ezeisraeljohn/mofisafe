@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  const crsfToken = $("meta[name=crsf-token").attr("content");
   let total_weekly_income = 0;
   let total_weekly_expense = [];
   const list = new Array(7).fill(0);
@@ -22,7 +23,9 @@ $(document).ready(function () {
     success: function (data) {
       let totalAmount = 0;
       data.forEach(function (category) {
-        totalAmount += parseFloat(category.category_balance);
+        if (category.type === "income") {
+          totalAmount += parseFloat(category.category_balance);
+        }
       });
       const formattedAmount = totalAmount.toFixed(2).toLocaleString();
       $(".balance").text(`$${formattedAmount}`);
@@ -272,7 +275,7 @@ $(document).ready(function () {
           xaxis: {
             labels: {
               formatter: function (value) {
-                return value + "k";
+                return "$" + value;
               },
             },
             axisTicks: {
@@ -405,5 +408,91 @@ $(document).ready(function () {
         chart.render();
       }
     },
+  });
+  // Fetch categories and populate the dropdown for adding income and expense
+  $.ajax({
+    url: "http://127.0.0.1:8000/api/v1/categories/",
+    method: "GET",
+    headers: {
+      Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
+    },
+    success: function (data) {
+      data.forEach(function (category) {
+        if (category.type === "income") {
+          $("#add-expense-category, #add-income-category").append(
+            `<option value="${category.id}">${category.name}</option>`
+          );
+        }
+      });
+    },
+  });
+
+  // Handle Expense Submittion
+  $("#add-expense-form").on("submit", function (event) {
+    event.preventDefault();
+    const data = {
+      amount: $("#add-expense-amount").val(),
+      date: $("#add-expense-date").val(),
+      description: $("#add-expense-description").val(),
+      category: $("#add-expense-category").val(),
+    };
+
+    $.ajax({
+      url: "http://127.0.0.1:8000/api/v1/expenses/",
+      method: "POST",
+      headers: {
+        Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
+        "X-CSRFToken": $('input[name="csrfmiddlewaretoken"]').val(),
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+      success: function (response) {
+        $(".goes").text("Expense added successfully!");
+        location.reload();
+      },
+      error: function (xhr, errmsg, err) {
+        $(".goes").text("Failed to add expense.");
+        let response = JSON.parse(xhr.responseText);
+        if (response.detail) {
+          alert("Error: " + response.detail);
+        } else {
+          alert("An error occurred: " + xhr.responseText);
+        }
+      },
+    });
+  });
+
+  // Handle Income Submittion
+  $("#add-income-form").on("submit", function (event) {
+    event.preventDefault();
+    const data = {
+      amount: $("#add-income-amount").val(),
+      date: $("#add-income-date").val(),
+      source: $("#add-income-source").val(),
+      category: $("#add-income-category").val(),
+    };
+
+    $.ajax({
+      url: "http://127.0.0.1:8000/api/v1/income/",
+      method: "POST",
+      headers: {
+        Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
+        "X-CSRFToken": $('input[name="csrfmiddlewaretoken"]').val(),
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+      success: function (response) {
+        $(".goes").text(data);
+        location.reload();
+      },
+      error: function (xhr, errmsg, err) {
+        let response = JSON.parse(xhr.responseText);
+        if (response.detail) {
+          alert("Error: " + response.detail);
+        } else {
+          alert("An error occurred: " + xhr.responseText);
+        }
+      },
+    });
   });
 });

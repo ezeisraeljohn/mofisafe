@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from income.models import Income
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -19,3 +20,8 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+    
+    class CreateIncomeForm(forms.ModelForm):
+        class Meta:
+            model = Income
+            fields = ['amount', 'source', 'date', 'category']
