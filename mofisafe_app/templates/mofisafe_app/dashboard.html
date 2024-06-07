@@ -742,7 +742,7 @@
         >
           <div class="bg-white p-6 rounded-md w-96">
             <h2 class="text-xl font-semibold mb-4">Add Income</h2>
-            <form method="post">
+            <form method="post" action="{% url 'add_income' %}">
               {% csrf_token %}
               <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700"
@@ -801,7 +801,7 @@
         >
           <div class="bg-white p-6 rounded-md w-96">
             <h2 class="text-xl font-semibold mb-4">Add Expense</h2>
-            <form method="post">
+            <form method="post" action="{% url 'add_expense' %}">
               {% csrf_token %}
               <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700"
