@@ -743,7 +743,7 @@
         >
           <div class="bg-white p-6 rounded-md w-96">
             <h2 class="text-xl font-semibold mb-4">Add Income</h2>
-            <form method="post">
+            <form id="add-income-form">
               {% csrf_token %}
               <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700"
@@ -753,16 +753,7 @@
                   type="number"
                   name="amount"
                   class="mt-1 p-2 w-full border rounded-md"
-                />
-              </div>
-              <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700"
-                  >Category</label
-                >
-                <input
-                  type="text"
-                  name="category"
-                  class="mt-1 p-2 w-full border rounded-md"
+                  id="add-income-amount"
                 />
               </div>
               <div class="mb-4">
@@ -773,6 +764,27 @@
                   type="date"
                   name="date"
                   class="mt-1 p-2 w-full border rounded-md"
+                  id="add-income-date"
+                />
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Category</label
+                >
+                <select
+                  id="add-income-category"
+                  class="mt-1 p-2 w-full border rounded-md"
+                ></select>
+              </div>
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700"
+                  >Source</label
+                >
+                <input
+                  type="text"
+                  name="source"
+                  class="mt-1 p-2 w-full border rounded-md"
+                  id="add-income-source"
                 />
               </div>
               <div class="flex justify-end">
@@ -785,7 +797,7 @@
                 </button>
                 <button
                   type="submit"
-                  class="px-4 py-2 bg-blue-500 text-white rounded-md"
+                  class="px-4 py-2 bg-blue-900 text-white rounded-md"
                 >
                   Add
                 </button>
