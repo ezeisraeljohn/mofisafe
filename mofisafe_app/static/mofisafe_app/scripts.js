@@ -409,6 +409,7 @@ $(document).ready(function () {
       }
     },
   });
+  // Fetch categories and populate the dropdown for adding income and expense
   $.ajax({
     url: "http://127.0.0.1:8000/api/v1/categories/",
     method: "GET",
@@ -416,45 +417,75 @@ $(document).ready(function () {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
     },
     success: function (data) {
-      let totalAmount = 0;
       data.forEach(function (category) {
         if (category.type === "income") {
-          $("#add-expense-category").append(
-            `<option id=${category.id} value=${category.id}>${category.name}</option>`
+          $("#add-expense-category, #add-income-category").append(
+            `<option value="${category.id}">${category.name}</option>`
           );
         }
       });
     },
   });
+
+  // Handle Expense Submittion
   $("#add-expense-form").on("submit", function (event) {
     event.preventDefault();
-    const data_show = {
+    const data = {
       amount: $("#add-expense-amount").val(),
       date: $("#add-expense-date").val(),
       description: $("#add-expense-description").val(),
       category: $("#add-expense-category").val(),
     };
-    console.log(data_show);
+
     $.ajax({
-      url: "http://127.0.0.1:8000/api/v1/expenses",
+      url: "http://127.0.0.1:8000/api/v1/expenses/",
       method: "POST",
-      headers: { Authorization: "Basic " + btoa("ezeisraeljohn:testuser123") },
-      data: JSON.stringify({
-        amount: $("#add-expense-amount").val(),
-        date: $("#add-expense-date").val(),
-        description: $("#add-expense-description").val(),
-        category: $("#add-expense-category").val(),
-      }),
-      contentType: "application/json",
       headers: {
-        "X-CRSFToken": crsfToken,
         Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
+        "X-CSRFToken": $('input[name="csrfmiddlewaretoken"]').val(),
+        "Content-Type": "application/json",
       },
-      success: function (data) {
-        $(".goes").text(data);
+      data: JSON.stringify(data),
+      success: function (response) {
+        $(".goes").text("Expense added successfully!");
+        location.reload();
       },
       error: function (xhr, errmsg, err) {
-        $(".goes").text("data");
+        $(".goes").text("Failed to add expense.");
+        let response = JSON.parse(xhr.responseText);
+        if (response.detail) {
+          alert("Error: " + response.detail);
+        } else {
+          alert("An error occurred: " + xhr.responseText);
+        }
+      },
+    });
+  });
+
+  // Handle Income Submittion
+  $("#add-income-form").on("submit", function (event) {
+    event.preventDefault();
+    const data = {
+      amount: $("#add-income-amount").val(),
+      date: $("#add-income-date").val(),
+      source: $("#add-income-source").val(),
+      category: $("#add-income-category").val(),
+    };
+
+    $.ajax({
+      url: "http://127.0.0.1:8000/api/v1/income/",
+      method: "POST",
+      headers: {
+        Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
+        "X-CSRFToken": $('input[name="csrfmiddlewaretoken"]').val(),
+        "Content-Type": "application/json",
+      },
+      data: JSON.stringify(data),
+      success: function (response) {
+        $(".goes").text(data);
+        location.reload();
+      },
+      error: function (xhr, errmsg, err) {
         let response = JSON.parse(xhr.responseText);
         if (response.detail) {
           alert("Error: " + response.detail);
