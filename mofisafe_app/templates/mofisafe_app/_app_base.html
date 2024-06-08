@@ -1,0 +1,120 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+    <title>Mofisafe Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{% static 'mofisafe_app/scripts.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.0.6/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body
+    class="bg-gray-100 font-sans leading-normal tracking-normal"
+    x-data="{ showIncomeForm: false, showExpenseForm: false}"
+  >
+    <div class="flex">
+      <!-- Sidebar -->
+      <div class="w-64 bg-blue-900 p-8 border-r flex flex-col justify-between">
+        <div class="flex flex-col items-center">
+          <a
+            href="{% url 'dashboard' %}"
+            class="text-3xl font-semibold text-center text-white"
+            >Mofisafe</a
+          >
+          <div class="flex flex-col items-center mt-6 -mx-2">
+            <h4 class="mx-2 mt-2 font-medium text-gray-100">
+              {{ user.last_name }}
+            </h4>
+            <p class="mx-2 mt-1 text-sm font-medium text-gray-400">
+              {{ user.email }}
+            </p>
+          </div>
+          <nav class="mt-6">
+            <a
+              class="flex items-center px-4 py-2 text-gray-300 rounded-md hover:bg-blue-800 hover:text-white"
+              href="{% url 'dashboard' %}"
+            >
+              <img
+                class="w-5 h-5 filter invert"
+                src="{% static 'img/home.svg' %}"
+                alt="Dashboard icon"
+              />
+              <span class="mx-4 font-medium">Dashboard</span>
+            </a>
+            <a
+              class="flex items-center px-4 py-2 mt-5 text-gray-300 rounded-md hover:bg-blue-800 hover:text-white"
+              href="{% url 'transaction' %}"
+            >
+              <img
+                class="w-5 h-5"
+                src="{% static 'img/transaction.svg' %}"
+                alt="transaction icon"
+              />
+              <span class="mx-4 font-medium">Transactions</span>
+            </a>
+            <a
+              class="flex items-center px-4 py-2 mt-5 text-gray-300 rounded-md hover:bg-blue-800 hover:text-white"
+              href="{% url 'report' %}"
+            >
+              <img
+                class="w-5 h-5 filter invert"
+                src="{% static 'img/report.svg' %}"
+                alt="Report icon"
+              />
+              <span class="mx-4 font-medium">Reports</span>
+            </a>
+            <a
+              class="flex items-center px-4 py-2 mt-5 text-gray-300 rounded-md hover:bg-blue-800 hover:text-white"
+              href="#"
+            >
+              <img
+                class="w-5 h-5 filter invert"
+                src="{% static 'img/settings.svg' %}"
+                alt="Settings icon"
+              />
+              <span class="mx-4 font-medium">Settings</span>
+            </a>
+          </nav>
+        </div>
+        <div class="flex items-center px-4 -mx-2">
+          <a href="{% url 'logout' %}" class="flex items-center px-4 py-2">
+            <svg
+              class="w-5 h-5 text-gray-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 2a6 6 0 106 6 6 6 0 00-6-6zm3 8h-2v2a1 1 0 11-2 0v-2H7a1 1 0 010-2h2V6a1 1 0 112 0v2h2a1 1 0 010 2z"
+              ></path>
+            </svg>
+            <span class="mx-2 font-medium text-gray-300 hover:underline"
+              >Logout</span
+            >
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="flex flex-col flex-1 w-full">
+        <main class="container mx-auto mt-6">
+          {% block mainContent %} {% endblock mainContent %}
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
