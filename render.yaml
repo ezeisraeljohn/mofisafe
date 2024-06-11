@@ -1,17 +1,44 @@
+# services:
+#   - type: web
+#     name: mofisafe
+#     env: python
+#     buildCommand: |
+#       pip install -r requirements.txt
+#       python manage.py collectstatic --noinput
+#     startCommand: "python -m gunicorn mofisafe.asgi:application -k uvicorn.workers.UvicornWorker"
+#     envVars:
+#       - key: DJANGO_SETTINGS_MODULE
+#         value: mofisafe.settings
+#       - key: SECRET_KEY
+#         value: "django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!"
+#       - key: DATABASE_URL
+#         value: "postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a:5432/mofisafe_prod_db"
+#     plan: free
+#     port: 8000 # Specify the port your Django app will use
+
+
+    databases:
+  - name: mofisafe
+    plan: free
+    databaseName: mofisafe_prod_db
+    user: mofisafe_prod
+
 services:
   - type: web
+    plan: free
     name: mofisafe
-    env: python
+    runtime: python
     buildCommand: |
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
-    startCommand: "python -m gunicorn mofisafe.asgi:application -k uvicorn.workers.UvicornWorker"
+      python manage.py migrate
+    startCommand: "python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: mofisafe.settings
-      - key: SECRET_KEY
-        value: "django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!"
       - key: DATABASE_URL
-        value: "postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a:5432/mofisafe_prod_db"
-    plan: free
-    port: 8000 # Specify the port your Django app will use
+        fromDatabase:
+          name: mofisafe
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
