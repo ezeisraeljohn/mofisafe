@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mofisafe
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn mofisafe.wsgi --log-file -
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: mofisafe.settings
+      - key: SECRET_KEY
+        value: "django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!"
+      - key: DATABASE_URL
+        value: mysql://mofisafe_dev:mofisafe_dev_db@198.199.77.247:3306/mofisafe_dev_db
