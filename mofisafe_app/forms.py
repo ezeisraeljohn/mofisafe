@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from income.models import Income
+from django import forms
+from user_profile.models import Profile
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -25,3 +27,9 @@ class CustomUserCreationForm(UserCreationForm):
         class Meta:
             model = Income
             fields = ['amount', 'source', 'date', 'category']
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'location', 'birth_date', 'profile_pic']
