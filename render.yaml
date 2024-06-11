@@ -13,5 +13,5 @@ services:
         value: "django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!"
       - key: DATABASE_URL
         value: "postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a:5432/mofisafe_prod_db"
-     plan: free
-     port: 8000  # Specify the port your Django app will use
+    plan: free
+    port: 8000 # Specify the port your Django app will use
