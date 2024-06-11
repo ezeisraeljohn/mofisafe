@@ -32,3 +32,4 @@ urllib3==2.2.1
 whitenoise
 dj_database_url
 whitenoise
+gunicorn
