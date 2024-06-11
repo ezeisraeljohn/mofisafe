@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileForm
 from django.contrib.auth import login, logout
 from django.urls import reverse
 from django.contrib import messages
-
 
 def index(request):
     return render(request, "mofisafe_app/index.html", {})
@@ -57,3 +56,18 @@ def transaction(request):
 def report(request):
     """ The report page"""
     return render(request, 'mofisafe_app/report.html', {})
+
+def profile(request):
+    """ The profile page"""
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('profile')
+    else:
+        profile_form = ProfileForm(instance=request.user.profile)
+    context = {
+        'profile_form': profile_form
+    }
+    return render(request, 'mofisafe_app/profile.html', context)
