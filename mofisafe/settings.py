@@ -101,15 +101,14 @@ WSGI_APPLICATION = 'mofisafe.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
 DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'mofisafe_dev_db',
-#         'USER': 'mofisafe_dev',
-#         'PASSWORD': 'mofisafe_dev_pwd',
-#         'HOST': 'localhost'
-#     }
-'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a/mofisafe_prod_db',
+        conn_max_age=600
+    )
 }
 
 
