@@ -1,0 +1,110 @@
+body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.form_login{
+        height: 50%;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        margin-top: 8%;
+        padding-bottom: auto;
+        /* border: blue solid 2px; */
+}
+
+.login{
+        
+        border: none;
+        padding: 30px;
+        margin-top: 10px;
+        height: 50%;
+        width: 30%;
+        border-radius: 13px;
+        background-color: rgb(240, 239, 239);
+        box-shadow: rgb(0, 0, 0), inset;
+        text-align: center;
+        margin-left: 10%;
+        color: rgb(3, 48, 3);
+}
+
+.name{
+        margin-top: 15%;
+        margin-bottom: 10px;
+        display: flex;
+}
+
+.password{
+        display: flex;
+        margin: 5% 0 0 0;
+}
+.input_passwd{
+        width: 70%;
+        margin-left:15%;
+        border-left: none;
+        border-top: none;
+        border-radius: 5px;
+        padding: 5px
+}
+
+.input_name{
+        width: 70%;
+        margin-left: 15%;
+        border-left: none;
+        border-top: none;
+        border-radius: 5px;
+        padding: 5px;
+}
+
+.login_btn{
+        margin: 10% 0 0 -1%;
+        width: 50%;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+        position: relative;
+        color: white;
+        background-color: rgb(2, 2, 115);
+}
+.sign_up_btn{
+        margin: -2% 0 0 0;
+        width: 50%;
+        border: none;
+        border-radius: 10px;
+        padding: 5px;
+        position: relative;
+        color: white;
+        background-color: rgb(12, 176, 12);
+}
+.login_btn:hover{
+        background-color: rgba(8, 73, 203, 0.966);
+        animation: both;
+        color: whitesmoke;
+}
+.sign_up_btn:hover{
+        background-color: rgba(29, 190, 7, 0.966);
+        animation: both;
+        color: whitesmoke;
+
+}
+.github_icon{
+        padding: 20px;
+        align-self: center;
+        border-radius: 50%;
+        align-content: center;
+        background-color: blue;
+        margin-top: -10px;
+        width: 50px;
+        height: 50px
+}
+
+.second{
+        display: flex;
+        border: rgba(0, 0, 0, 0.608) solid 2px;
+        width: 0%;
+        border-radius: 5px;
+        margin-left: 10%;
+}
+.login_signup_sep{
+        margin-top: 1%;
+        margin-bottom: 2%;
+}
