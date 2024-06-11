@@ -2,14 +2,10 @@ services:
   - type: web
     name: mofisafe
     env: python
-     buildCommand: |
-      python3 -m venv venv
-      source venv/bin/activate
+    buildCommand: |
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
-    startCommand: |
-      source venv/bin/activate
-      gunicorn mofisafe.asgi:application -k uvicorn.workers.UvicornWorker
+    startCommand: python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: mofisafe.settings
