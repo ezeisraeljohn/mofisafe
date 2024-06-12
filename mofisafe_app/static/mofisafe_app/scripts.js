@@ -473,7 +473,7 @@ $(document).ready(function () {
     };
 
     $.ajax({
-      url: "http://mofisafe.onrender.com/api/v1/income/",
+      url: "https://mofisafe.onrender.com/api/v1/income/",
       method: "POST",
       headers: {
         Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
