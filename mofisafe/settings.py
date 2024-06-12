@@ -27,7 +27,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
@@ -111,6 +111,7 @@ DATABASES = {
     )
 }
 
+DATABASES['default']=dj_database_url.parse('postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a.oregon-postgres.render.com/mofisafe_prod_db')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
