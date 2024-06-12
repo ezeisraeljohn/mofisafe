@@ -23,11 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!'
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-ja1^h$mo-&+k#j6+=6*gy#ulge_^w&sjys+3!aw#!#)7dlg%i!')
-
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "FALSE").lower() == "true"
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
@@ -35,7 +34,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
 ]
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(" ")
 
 
 # Application definition
@@ -102,16 +101,12 @@ WSGI_APPLICATION = 'mofisafe.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a/mofisafe_prod_db',
-        conn_max_age=600
-    )
+
 }
 
-DATABASES['default']=dj_database_url.parse('postgres://mofisafe_prod:fTaNTzqtqvkIh9CnE57MFScppJRZB17X@dpg-cpk8ciq0si5c73cmbuk0-a.oregon-postgres.render.com/mofisafe_prod_db')
+database_url = os.environ.get("DATABASE_URL")
+DATABASES['default']=dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
