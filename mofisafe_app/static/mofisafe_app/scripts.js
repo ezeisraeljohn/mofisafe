@@ -447,7 +447,6 @@ $(document).ready(function () {
       },
       data: JSON.stringify(data),
       success: function (response) {
-        $(".goes").text("Expense added successfully!");
         location.reload();
       },
       error: function (xhr, errmsg, err) {
