@@ -15,7 +15,7 @@ $(document).ready(function () {
   }
   // Gets Available Balance
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/categories/",
+    url: "https://mofisafe.onrender.com/api/v1/categories/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   // Gets the total expense for a month
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/expenses/",
+    url: "https://mofisafe.onrender.com/api/v1/expenses/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
   // Get the total income for a week a create a chart for it
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/income/",
+    url: "https://mofisafe.onrender.com/api/v1/income/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -73,7 +73,7 @@ $(document).ready(function () {
   });
 
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/income/",
+    url: "https://mofisafe.onrender.com/api/v1/income/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -181,7 +181,7 @@ $(document).ready(function () {
 
   // This gets categories and create a chart for it
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/categories/",
+    url: "https://mofisafe.onrender.com/api/v1/categories/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -299,7 +299,7 @@ $(document).ready(function () {
   });
 
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/expenses/",
+    url: "https://mofisafe.onrender.com/api/v1/expenses/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -411,7 +411,7 @@ $(document).ready(function () {
   });
   // Fetch categories and populate the dropdown for adding income and expense
   $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/categories/",
+    url: "https://mofisafe.onrender.com/api/v1/categories/",
     method: "GET",
     headers: {
       Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -438,7 +438,7 @@ $(document).ready(function () {
     };
 
     $.ajax({
-      url: "http://127.0.0.1:8000/api/v1/expenses/",
+      url: "https://mofisafe.onrender.com/api/v1/expenses/",
       method: "POST",
       headers: {
         Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
@@ -473,7 +473,7 @@ $(document).ready(function () {
     };
 
     $.ajax({
-      url: "http://127.0.0.1:8000/api/v1/income/",
+      url: "http://mofisafe.onrender.com/api/v1/income/",
       method: "POST",
       headers: {
         Authorization: "Basic " + btoa("ezeisraeljohn:testuser123"),
