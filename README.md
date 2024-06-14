@@ -1,3 +1,4 @@
+![1718181695778](https://github.com/ezeisraeljohn/mofisafe/assets/113423080/31d644b6-ef5f-4e19-a7c7-07bf316e6424)
 
 # Mofisafe  - A Financial Tracking App
 
