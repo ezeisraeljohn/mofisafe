@@ -112,11 +112,11 @@ CA_CERT_PATH = os.getenv("CA_CERT_PATH")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST", "mysql-870e415-tim-events.e.aivencloud.com"),
+        "PORT": os.environ.get("DB_PORT", "./ca_cert.pem"),
         "OPTIONS": {
             "ssl": {
                 "ca": CA_CERT_PATH,
