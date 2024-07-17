@@ -109,11 +109,11 @@ CA_CERT_PATH = os.getenv("CA_CERT_PATH")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "your_database_name",
-        "USER": "your_database_user",
-        "PASSWORD": "your_database_password",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
         "OPTIONS": {
             "ssl": {
                 "ca": CA_CERT_PATH,
