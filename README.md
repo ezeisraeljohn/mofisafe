@@ -1,47 +1,101 @@
-# MOFISAFE
+![1718181695778](https://github.com/ezeisraeljohn/mofisafe/assets/113423080/31d644b6-ef5f-4e19-a7c7-07bf316e6424)
 
-## Financial Tracking App for Everyone
+# Mofisafe  - A Financial Tracking App
 
+Welcome to The Mofisafe App. This is a Django application designed to help you manage your finances.
 
-## About
-This app is for all those who find it difficult to maintain their financial records while keeping up with their busy schedule
-
-## Features
-- User authentication (login and registration)
-- Track and Display total income, total expenses, and net savings
-- Detailed breakdown of expenses by category
-- Visual representation of income vs. expenses and category spending
-- Responsive design using Tailwind CSS
-
-## Technology Used
-1. Backend:
-  - Django (python)
-  - MySQL (database)
-2. Frontend
-  - Tailwind CSS
-
-## Setup and Installation
-- Python 3.x
-- Django 3.x
-- MySQL database
-- Node.js and npm (for Tailwind CSS)
-- Backend dependencies are in the "requirement.txt" file
-- MySQL database for this project is in the "settings.py" file
-- Migration between Django and Tailwind used the "manage.py" file
+You can visit the deployed site here. For more insights and detailed information, check out the final project blog article here.
 
 
-## Usage
-1. Access the Application
-  - Open your browser and go to ...
-
-2. Login or Register
-  - Use the authentication features to log in or create a new account.
-
-3. Manage Finances
-   - Add your income and expenses.
-   - View the summary of your financial data.
-   - Analyze your spending patterns with the provided charts.
 
 
 ## Acknowledgements
-> Thanks to the Django and Tailwind CSS communities for their excellent tools and documentation.
+
+ - [Tailwind Official Documentation](https://v2.tailwindcss.com/docs)
+ - [Django Official Documentation](https://docs.djangoproject.com/en/5.0/)
+
+
+## API Reference
+
+#### To access the Mofisafe API, use the following endpoint. This will take you to our Django REST Framework (DRF) home page, where you can view and interact with all available API endpoints once logged in.
+
+```http
+  GET /api/v1/
+```
+
+## Authentication. 
+
+#### Access to the API requires authentication. Ensure that you are logged in to access the full range of API endpoints. You must sign up as a user to login via the DRF hime page
+
+```http
+  GET api/v1/auth/
+```
+
+
+## Authors
+
+- [@Ughagwu Oluchukwu](https://github.com/oluchristian)
+- [@Eze Israel John](https://github.com/ezeisraeljohn)
+- [@Sanele Skhosana](https://github.com/sanzamcmillian)
+
+
+## Installation
+
+To get a local copy up and running, follow these simple steps.
+
+```bash
+  git clone https://github.com/ezeisraeljohn/mofisafe.git
+  cd mofisafe
+```
+
+Create a virtual environment.
+
+```bash
+  python -m venv venv
+```
+
+Activate the virtual environment.
+
+```bash
+  source venv/bin/activate
+```
+
+Install dependencies.
+
+```bash
+  pip install -r requirements.txt
+```
+
+Apply migrations
+
+```bash
+  python manage.py migrate
+```
+
+Apply migrations
+
+```bash
+  python manage.py migrate
+```
+
+Run the development server
+
+```bash
+  python manage.py runserver
+```
+    
+## Usage/Examples
+
+Once the server is running, you can access the application in your web browser at http://127.0.0.1:8000/.
+
+
+## Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+Fork the Project
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+Push to the Branch (git push origin feature/AmazingFeature)
+Open a Pull Request
+
