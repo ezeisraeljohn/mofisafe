@@ -32,10 +32,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", "FALSE").lower() == "true"
 CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-]
+CORS_ALLOWED_ORIGINS = ["*"]
 
 ALLOWED_HOSTS = ["*"]
 
@@ -65,6 +62,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "widget_tweaks",
     "rest_framework.authtoken",
+    "drf_material"
 ]
 
 MIDDLEWARE = [
@@ -109,21 +107,8 @@ SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 CA_CERT_PATH = os.getenv("CA_CERT_PATH")
 
 # Configure the DATABASES setting with SSL options
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("DB_NAME"),
-        "USER": os.environ.get("DB_USER"),
-        "PASSWORD": os.environ.get("DB_PASSWORD"),
-        "HOST": os.environ.get("DB_HOST", "mysql-870e415-tim-events.e.aivencloud.com"),
-        "PORT": os.environ.get("DB_PORT", "./ca_cert.pem"),
-        "OPTIONS": {
-            "ssl": {
-                "ca": CA_CERT_PATH,
-            },
-        },
-    }
-}
+DATABASES = {"default": dj_database_url.parse(os.getenv("DATABASE_URL"))}
+DATABASES["default"]["OPTIONS"] = {"ssl": {"ca": os.getenv("CA_CERT_PATH")}}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
